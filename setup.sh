@@ -10,7 +10,7 @@ mkdir -p ./source
 sudo mkdir -p /var/www
 sudo chmod  777 /var/www
 sudo apt update -y
-sudo apt install -y nginx gcc dpkg-dev gpg rpm gnupg
+sudo apt install -y nginx gcc dpkg-dev gpg rpm gnupg supervisor
 pip install -r requirements.txt
 sudo cp ./nginx.conf /etc/nginx/sites-available/default
 sudo service nginx restart
