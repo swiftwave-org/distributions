@@ -28,3 +28,4 @@ supervisor_cnf=$(echo "$supervisor_cnf" | sed "s|SECRET_KEY_HERE|$SECRET_KEY|g")
 sudo rm -f /etc/supervisor/conf.d/distributions.conf
 echo "$supervisor_cnf" | sudo tee /etc/supervisor/conf.d/distributions.conf
 sudo service supervisor restart
+sudo supervisorctl restart all
