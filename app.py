@@ -15,9 +15,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 RPM_BASE_URL = os.getenv("RPM_BASE_URL")
 DEB_BASE_URL = os.getenv("DEB_BASE_URL")
 task_file = "./task.json"
+log_file = "./log.txt"
 
 def log(msg):
-    print(msg)
+    with FileLock(f"{log_file}.lock"):
+        with open(log_file, "a") as f:
+            f.write(f"{msg}\n")
 
 def process_release_request():
     is_new_assets_added = False
@@ -100,6 +103,9 @@ if __name__ == '__main__':
     if not os.path.exists(task_file):
         with open(task_file, "w") as f:
             json.dump([], f)
+    if not os.path.exists(log_file):
+        with open(log_file, "w") as f:
+            f.write("")
 
     if len(sys.argv) > 1:
         cmd = sys.argv[1]

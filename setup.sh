@@ -12,6 +12,7 @@ fi
 USER=$1
 SECRET_KEY=$2
 mkdir -p ./source
+sudo rm -rf /var/www
 sudo mkdir -p /var/www
 sudo chmod  777 /var/www
 sudo apt update -y
