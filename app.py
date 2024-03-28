@@ -14,12 +14,10 @@ app = Flask(__name__)
 SECRET_KEY = os.getenv("SECRET_KEY")
 RPM_BASE_URL = os.getenv("RPM_BASE_URL")
 DEB_BASE_URL = os.getenv("DEB_BASE_URL")
-log_file = "./log.txt"
 task_file = "./task.json"
 
 def log(msg):
-    with open(log_file, "a") as f:
-        f.write(msg + "\n")
+    print(msg)
 
 def process_release_request():
     is_new_assets_added = False
@@ -59,14 +57,10 @@ def process_release_request():
             is_new_assets_added = True
 
         except Exception as e:
-            with open(log_file, "a") as f:
-                f.write(str(e))
+            log(e)
 
 @app.get('/')
 def run_update():
-    # verify secret key in Authorization header
-    log(request.headers.get('Authorization'))
-    log(SECRET_KEY)
     if request.headers.get('Authorization') != SECRET_KEY:
         return "Unauthorized", 401
     repo_name = request.args.get('repo_name')
