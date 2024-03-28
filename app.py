@@ -66,7 +66,7 @@ def process_release_request():
 def run_update():
     # verify secret key in Authorization header
     log(request.headers.get('Authorization'))
-    print(SECRET_KEY)
+    log(SECRET_KEY)
     if request.headers.get('Authorization') != SECRET_KEY:
         return "Unauthorized", 401
     repo_name = request.args.get('repo_name')
