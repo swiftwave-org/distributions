@@ -1,7 +1,6 @@
 import os
 import sys
 import time
-from dotenv import load_dotenv
 from flask import Flask, request
 import requests
 from threading import Thread
@@ -12,7 +11,6 @@ from repo import process_repo
 
 app = Flask(__name__)
 
-load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 RPM_BASE_URL = os.getenv("RPM_BASE_URL")
 DEB_BASE_URL = os.getenv("DEB_BASE_URL")
