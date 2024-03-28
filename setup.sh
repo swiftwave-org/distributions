@@ -12,9 +12,12 @@ fi
 USER=$1
 SECRET_KEY=$2
 mkdir -p ./source
-sudo rm -rf /var/www
 sudo mkdir -p /var/www
 sudo chmod  777 /var/www
+if [ ! -d "/var/www/html/deb" ]; then
+    sudo rm -rf /var/www/html
+    sudo mkdir -p /var/www/html
+fi
 sudo apt update -y
 sudo apt install -y python3-pip nginx gcc dpkg-dev gpg rpm gnupg supervisor createrepo-c
 pip install -r requirements.txt
@@ -30,4 +33,3 @@ echo "$supervisor_cnf" | sudo tee /etc/supervisor/conf.d/distributions.conf
 sudo service supervisor restart
 sleep 5
 sudo supervisorctl restart all
-RPM_BASE_URL="http://rpm.repo.swiftwave.org" DEB_BASE_URL="http://deb.repo.swiftwave.org" SECRET_KEY=$SECRET_KEY python3 app.py worker
