@@ -1,0 +1,10 @@
+*.private
+repo
+source/*
+venv
+!source/.keep
+task.json
+task.json.lock
+log.txt
+__pycache__
+.env
