@@ -30,3 +30,4 @@ echo "$supervisor_cnf" | sudo tee /etc/supervisor/conf.d/distributions.conf
 sudo service supervisor restart
 sleep 5
 sudo supervisorctl restart all
+RPM_BASE_URL="http://rpm.repo.swiftwave.org" DEB_BASE_URL="http://deb.repo.swiftwave.org" SECRET_KEY=$SECRET_KEY python3 app.py worker
