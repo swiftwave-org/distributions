@@ -12,6 +12,7 @@ from repo import process_repo
 
 app = Flask(__name__)
 
+load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 RPM_BASE_URL = os.getenv("RPM_BASE_URL")
 DEB_BASE_URL = os.getenv("DEB_BASE_URL")
@@ -94,7 +95,6 @@ def run_update():
     return "OK", 200
 
 if __name__ == '__main__':
-    load_dotenv()
     if os.getenv("RPM_BASE_URL") is None:
         print("Please set RPM_BASE_URL in environment")
         sys.exit(1)
