@@ -16,7 +16,7 @@ sudo rm -rf /var/www
 sudo mkdir -p /var/www
 sudo chmod  777 /var/www
 sudo apt update -y
-sudo apt install -y python3-pip nginx gcc dpkg-dev gpg rpm gnupg supervisor
+sudo apt install -y python3-pip nginx gcc dpkg-dev gpg rpm gnupg supervisor createrepo-c
 pip install -r requirements.txt
 sudo cp ./nginx.conf /etc/nginx/sites-available/default
 sudo service nginx restart
