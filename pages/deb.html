@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEB Repo</title>
+    <title>Welcome to Swiftwave Debian Repository</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 30px;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-    DEB Repo
+    <h2>Welcome to Swiftwave Debian Repository !</h2>
+    <br>
+    <h4>Run the following commands to add the repository to your system</h4>
+    <pre>
+sudo mkdir -p /etc/apt/keyrings 
+sudo mkdir /root/.gnupg
+sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/swiftwave.gpg --keyserver keyserver.ubuntu.com --recv-keys DD510C86CD3F6764
+echo "deb [signed-by=/etc/apt/keyrings/swiftwave.gpg] http://deb.repo.swiftwave.org/ swiftwave stable" | sudo tee /etc/apt/sources.list.d/swiftwave.list
+</pre>
+
+<h4>Then run the following commands to install Swiftwave</h4>
+
+<pre>
+sudo apt update
+sudo apt install swiftwave
+</pre>
 </body>
 </html>

@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPM Repo</title>
+    <title>Welcome to Swiftwave RPM Repository</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 30px;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            background-color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
-    RPM Repo
+    <h2>Welcome to Swiftwave RPM Repository !</h2>
+    <br>
+    <h4>Run the following commands to add the repository to your system</h4>
+    <pre>
+sudo dnf config-manager --add-repo http://rpm.repo.swiftwave.org/swiftwave.repo
+</pre>
+
+<h4>Then run the following commands to install Swiftwave</h4>
+
+<pre>
+sudo dnf install swiftwave
+</pre>
 </body>
 </html>
