@@ -64,7 +64,8 @@ def process_release_request():
 
 @app.get('/')
 def run_update():
-    if request.headers.get('Authorization') != SECRET_KEY:
+    auth_header = request.headers.get('Authorization')
+    if not SECRET_KEY or not auth_header or auth_header != SECRET_KEY:
         return "Unauthorized", 401
     repo_name = request.args.get('repo_name')
     if not repo_name:
@@ -97,6 +98,9 @@ if __name__ == '__main__':
         sys.exit(1)
     if os.getenv("DEB_BASE_URL") is None:
         print("Please set DEB_BASE_URL in environment")
+        sys.exit(1)
+    if not os.getenv("SECRET_KEY"):
+        print("Please set SECRET_KEY in environment")
         sys.exit(1)
     if not os.path.exists("source"):
         os.makedirs("source")
